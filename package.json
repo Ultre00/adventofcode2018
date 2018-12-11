@@ -1,0 +1,26 @@
+{
+  "name": "adventofcode2018",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "1": "cd 1 && node app.js && cd.."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ultre00/adventofcode2018.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Ultre00/adventofcode2018/issues"
+  },
+  "homepage": "https://github.com/Ultre00/adventofcode2018#readme",
+  "dependencies": {
+    "fs": "0.0.1-security"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.2.0",
+    "@babel/node": "^7.2.0"
+  }
+}
