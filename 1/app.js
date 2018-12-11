@@ -4,7 +4,6 @@ const readline = require('readline');
 let found = false;
 let result = [0];
 let frequency = 0;
-let runs = 0;
 
 adjustFrequency = (input) => {
     frequency += input;
@@ -12,7 +11,7 @@ adjustFrequency = (input) => {
     result.push(frequency);
 }
 
-lego = () => {
+readFile = () => {
     const rl = readline.createInterface({
         input: fs.createReadStream('./input'),
         crlfDelay: Infinity
@@ -27,12 +26,11 @@ lego = () => {
     rl.on('close', () => {
         runs++;
         if(!found){            
-            lego();
-            console.log(runs);
+            readFile();
         } else{
             console.log(`found it: ${frequency}`);
         }
     });
 }
 
-lego();
+readFile();
