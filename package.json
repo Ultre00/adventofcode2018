@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "1": "cd 1 && node app.js && cd..",
-    "2": "cd 2 && node app.js && cd.."
+    "2": "cd 2 && node app.js && cd..",
+    "3": "cd 3 && node app.js && cd.."
   },
   "repository": {
     "type": "git",
@@ -17,9 +18,7 @@
     "url": "https://github.com/Ultre00/adventofcode2018/issues"
   },
   "homepage": "https://github.com/Ultre00/adventofcode2018#readme",
-  "dependencies": {
-    "fs": "0.0.1-security"
-  },
+  "dependencies": {},
   "devDependencies": {
     "@babel/core": "^7.2.0",
     "@babel/node": "^7.2.0"
