@@ -1,7 +1,33 @@
 const fs = require('fs');
 const readline = require('readline');
 
-let twos = 0, threes = 0;
+const data = [];
+
+processData = () => {
+    let wrong = 0
+    let wrongIndex = -1;
+    for (let i = 1; i < data.length; i++) {
+        const element = data[i];
+        for (let j = 0; j < i; j++) {
+            const element2 = data[j];
+            for (let k = 0; k < element.length; k++) {
+                if (element[k] !== element2[k]) {
+                    wrong++;
+                    wrongIndex = k;
+                }
+                if(wrong > 1)
+                    break;
+            }
+            if (wrong === 1) {                
+                console.log(`${element.substring(0, wrongIndex)}${element.substring(wrongIndex + 1, element.length)}`);
+                break;
+            }
+            wrong = 0;
+        }
+        if (wrong === 1)
+            break;
+    }
+}
 
 readFile = () => {
     const rl = readline.createInterface({
@@ -10,18 +36,11 @@ readFile = () => {
     });
 
     rl.on('line', (line) => {
-        let map = {};
-        for (let i = 0; i < line.length; i++) {
-            const char = line.charAt(i);
-            map[char] = !map[char] ? 1 : map[char] + 1;
-        }
-        twos += Object.values(map).find(m => m === 2) ? 1 : 0;
-        threes += Object.values(map).find(m => m === 3) ? 1 : 0;
+        data.push(line);
     });
 
     rl.on('close', () => {
-        console.log(twos * threes);
+        processData()
     });
 }
-
 readFile();
