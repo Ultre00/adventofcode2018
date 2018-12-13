@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "1": "cd 1 && node app.js && cd.."
+    "1": "cd 1 && node app.js && cd..",
+    "2": "cd 2 && node app.js && cd.."
   },
   "repository": {
     "type": "git",
