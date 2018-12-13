@@ -6,7 +6,8 @@
   "scripts": {
     "1": "cd 1 && node app.js && cd..",
     "2": "cd 2 && node app.js && cd..",
-    "3": "cd 3 && node app.js && cd.."
+    "3": "cd 3 && node app.js && cd..",
+    "4": "cd 4 && node app.js && cd.."    
   },
   "repository": {
     "type": "git",
