@@ -53,15 +53,23 @@ const dataToSleepingSchedules = data => {
 }
 
 const analyseSleepingSchedule = data => {
-    const mostSleepingGuard = Object.entries(data).reduce((prev, cur) => prev[1].totalSleep > cur[1].totalSleep ? prev : cur);    
-    const mostAsleepMinute = Number((Object.entries(mostSleepingGuard[1].sleepingMinutes).reduce((prev, cur) => prev[1] > cur[1] ? prev : cur))[0]);  
-    console.log(mostSleepingGuard[0] * mostAsleepMinute);  
+    const mostSleepingGuard = Object.entries(data).reduce((prev, cur) => prev[1].totalSleep > cur[1].totalSleep ? prev : cur);
+    const mostAsleepMinute = Number((Object.entries(mostSleepingGuard[1].sleepingMinutes).reduce((prev, cur) => prev[1] > cur[1] ? prev : cur))[0]);
+    console.log(mostSleepingGuard[0] * mostAsleepMinute);
+}
+
+const analyseSleepingSchedule2 = data => {
+    const mostSleepingGuard = Object.entries(data).reduce((prev, cur) => {      
+        return Math.max(...Object.values(prev[1].sleepingMinutes))> Math.max(...Object.values(cur[1].sleepingMinutes)) ? prev : cur
+    });
+    const mostAsleepMinute = Number((Object.entries(mostSleepingGuard[1].sleepingMinutes).reduce((prev, cur) => prev[1] > cur[1] ? prev : cur))[0]);
+    console.log(mostSleepingGuard[0] * mostAsleepMinute);
 }
 
 const run = async () => {
     const rawData = await utils.readFile('./input');
     const data = parseData(rawData);
     const sleepingSchedules = dataToSleepingSchedules(data);
-    analyseSleepingSchedule(sleepingSchedules);
+    analyseSleepingSchedule2(sleepingSchedules);
 }
 run();
