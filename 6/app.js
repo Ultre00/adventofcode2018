@@ -16,36 +16,16 @@ const parseData = input => {
 }
 
 const analyseData = data => {
-    let result = {};
-    let infinityIds = [];
+    let count = 0;
     for (let x = 0; x <= data.max.x + 1; x++) {
         for (let y = 0; y <= data.max.y + 1; y++) {
-            const closest = getClosestPoint({ x, y }, data.coords);
-            if (closest) {
-                result[closest.id] = result[closest.id] ? result[closest.id] + 1 : 1;
-                if ((x === 0 || x === data.max.x || y === 0 || y === data.max.y) && !infinityIds.includes(closest.id)) {
-                    infinityIds.push(closest.id);
-                }
+            const distance = data.coords.reduce((result, cur) => result + getDistance({ x, y }, cur), 0)
+            if (distance < 10000) {
+                count++;
             }
         }
     }
-    console.log(Math.max(...Object.entries(result).filter(m => !infinityIds.includes(Number(m[0]))).map(m => m[1])));
-    return result;
-}
-
-const getClosestPoint = (p, points) => {
-    let closest = Infinity;
-    let closestPoint;
-    for (let i = 0; i < points.length; i++) {
-        const distance = getDistance(p, points[i])
-        if (distance < closest) {
-            closest = distance;
-            closestPoint = points[i]
-        } else if (distance === closest) {
-            closestPoint = null;
-        }
-    }
-    return closestPoint;
+    console.log(count);
 }
 
 const getDistance = (p1, p2) => Math.abs(p1.x - p2.x) + Math.abs(p1.y - p2.y);
