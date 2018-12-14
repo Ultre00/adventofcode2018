@@ -1,6 +1,6 @@
 const utils = require('../utils');
 
-const processString = data => {
+const processString = (data) => {
     let result = data;
 
     for (let i = 0; i < result.length; i++) {
@@ -15,6 +15,13 @@ const processString = data => {
 
 const run = async () => {
     let input = (await utils.readFile('./input'))[0];
-    let result = processString(input);
+    let result;
+    for (let i = 0; i < 26; i++) {
+        const char = String.fromCharCode(i + 97);
+        const length = processString(input.replace(new RegExp("[" + char + char.toUpperCase() + "]", "g"), "")).length;
+        if (!result || length < result)
+            result = length;
+    }
+    console.log(result);
 }
 run();
