@@ -23,8 +23,8 @@ const countMetadataEntries = node => {
 
 const countMetadataEntriesPart2 = node => {
     if (node.nodes) {
-        return node.metadataEntries.filter(m => m > 0).map(m => m - 1).filter(m => node.nodes[m]).reduce((result, cur) => {
-            return result + countMetadataEntriesPart2(node.nodes[cur]);
+        return node.metadataEntries.filter(m => m > 0 && node.nodes[m-1]).reduce((result, cur) => {
+            return result + countMetadataEntriesPart2(node.nodes[cur-1]);
         }, 0);
     } else {
         return node.metadataEntries.reduce((result, cur) => result + cur);
