@@ -12,7 +12,8 @@
     "6": "cd 6 && node app.js && cd..",
     "7": "cd 7 && node app.js && cd..",
     "8": "cd 8 && node app.js && cd..",
-    "9": "cd 9 && node app.js && cd.."
+    "9": "cd 9 && node app.js && cd..",
+    "10": "cd 10 && node app.js && cd.."
   },
   "repository": {
     "type": "git",
