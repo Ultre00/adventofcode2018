@@ -24,12 +24,15 @@ const processData = data => {
     let prevData = data;
     let updatedData = updatePositions(prevData);
     let updatedFieldSize = getFieldSize(updatedData);
+    let secs = 0;
     while (updatedFieldSize < prevFieldSize) {
         prevData = updatedData;
         prevFieldSize = updatedFieldSize;
         updatedData = updatePositions(prevData);
         updatedFieldSize = getFieldSize(updatedData);
+        secs++;
     }
+    console.log(secs);
     drawField(normalizeData(prevData));
 }
 
